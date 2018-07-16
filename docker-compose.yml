@@ -1,0 +1,35 @@
+version: '2.1'
+services:
+  web:
+    image: 'node:8-alpine'
+    container_name: 'registry-ui-react'
+    volumes:
+      - './:/home/registry-ui/'
+    working_dir: /home/registry-ui/
+    ports:
+      - '${DOCKER_PORT:-3000}:3000'
+    command: sh -c 'yarn && yarn start'
+    networks:
+      - docker-registry-ui
+
+  registry-server:
+    image: 'registry:2'
+    container_name: 'registry'
+    ports:
+      - '${DOCKER_REGISTRY_PORT:-5000}:5000'
+    networks:
+      - docker-registry-ui
+
+  build:
+    image: 'node:8-alpine'
+    container_name: 'registry-ui'
+    volumes:
+      - './:/home/registry-ui/'
+    working_dir: /home/registry-ui/
+    command: sh -c 'yarn && yarn build'
+    networks:
+      - docker-registry-ui
+
+networks:
+  docker-registry-ui:
+    driver: bridge
