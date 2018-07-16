@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
+import 'bulma/css/bulma.min.css';
+
 import App from './App';
 
 ReactDOM.render(

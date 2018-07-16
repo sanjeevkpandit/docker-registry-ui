@@ -38,6 +38,12 @@ class Repo extends React.Component {
       return (
         <div>No repos found.</div>
       );
+    } else {
+      elements = (
+        <ul className="menu-list">
+          {elements}
+        </ul>
+      );
     }
 
     return elements;
@@ -52,8 +58,7 @@ class Repo extends React.Component {
 
     return (
       <div>
-        <h2>{this.state.repoName}</h2>
-
+        <h2 className="title is-h2">repo: {this.state.repoName}</h2>
         <div>{el}</div>
       </div>
     );
