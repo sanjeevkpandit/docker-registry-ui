@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-import * as repoServices from '../../services/repoService';
+import repoServices from '../../constants/services';
 
 import RepoListItem from './RepoListItem';
 
@@ -16,7 +16,7 @@ class RepoList extends React.Component {
   }
 
   async componentWillMount() {
-    let response = await repoServices.fetchAllRepos();
+    let response = await repoServices.getAllRepos();
 
     this.setState({
       data: response,
@@ -25,7 +25,7 @@ class RepoList extends React.Component {
   }
 
   getReposListElements(data) {
-    let repos = data.repositories || {};
+    let repos = data || [];
     let repoKeys = Object.keys(repos);
 
     let elements = repoKeys.map(key => {

@@ -8,7 +8,7 @@ import { Repo, RepoList, TagManifest } from './components/repo';
 const Routes = () => {
   return (
     <Switch>
-    <Route exact path={ROUTES.HOME} component={RepoList} />
+      <Route exact path={ROUTES.HOME} component={RepoList} />
       <Route exact path={ROUTES.REPOS} component={RepoList} />
       <Route exact path={ROUTES.RERPOS_ONE} component={Repo} />
       <Route exact path={ROUTES.TAG_MANIFEST} component={TagManifest} />

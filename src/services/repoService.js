@@ -13,7 +13,7 @@ async function fetchAllRepos() {
   try {
     const response = await axios(apiUrls.FETCH_ALL);
 
-    data = response.data;
+    data = response.data.repositories;
   } catch (error) {
     data = null;
   }

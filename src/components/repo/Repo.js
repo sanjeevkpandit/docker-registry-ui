@@ -1,6 +1,6 @@
 import React from 'react';
 
-import * as repoServices from '../../services/repoService';
+import repoServices from '../../constants/services';
 
 import RepoTag from './RepoTag';
 
@@ -16,7 +16,7 @@ class Repo extends React.Component {
   }
 
   async componentWillMount() {
-    let response = await repoServices.fetchRepoTags(this.state.repoName);
+    let response = await repoServices.getRepoTags(this.state.repoName);
 
     this.setState({
       data: response,
