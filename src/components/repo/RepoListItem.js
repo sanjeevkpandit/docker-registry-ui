@@ -4,9 +4,11 @@ const RepoListItem = props => {
   const hrefUrl =`/repos/${props.value}`;
 
   return (
-    <li>
-      <a href={hrefUrl}>{props.value}</a>
-    </li>
+    <tr>
+      <td>
+        <a href={hrefUrl}>{props.value}</a>
+      </td>
+    </tr>
   );
 };
 

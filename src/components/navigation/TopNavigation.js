@@ -1,26 +1,20 @@
 import React from 'react';
 
 const TopNavigation = () => (
-  <nav className="navbar is-link" aria-label="main navigation">
-    <div className="navbar-brand">
-      <a className="navbar-item" href="/">
-        <h1 className="title is-h1 has-text-white">Docker Registry UI</h1>
-      </a>
-
-      <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
+  <div className="top-bar">
+    <div className="top-bar-left">
+      <ul className="dropdown menu" data-dropdown-menu>
+        <li className="menu-text">Docker Registry UI</li>
+        <li><a href="/repos">Repos</a></li>
+      </ul>
     </div>
-    <div id="navbarExampleTransparentExample" className="navbar-menu">
-      <div className="navbar-start">
-        <a className="navbar-item" href="/repos">
-          Repos
-        </a>
-      </div>
+    <div className="top-bar-right">
+      <ul className="menu">
+        <li><input type="search" placeholder="Search"/></li>
+        <li><button type="button" className="button">Search</button></li>
+      </ul>
     </div>
-  </nav>
+  </div>
 );
 
 export default TopNavigation;

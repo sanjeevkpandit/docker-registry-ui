@@ -3,6 +3,7 @@ import React from 'react';
 import repoServices from '../../constants/services';
 
 import RepoTag from './RepoTag';
+import { BreadCrumbs } from '../navigation';
 
 class Repo extends React.Component {
   constructor(props) {
@@ -38,12 +39,6 @@ class Repo extends React.Component {
       return (
         <div>No repos found.</div>
       );
-    } else {
-      elements = (
-        <ul className="menu-list">
-          {elements}
-        </ul>
-      );
     }
 
     return elements;
@@ -55,11 +50,26 @@ class Repo extends React.Component {
     }
 
     const el = this.getTagElements(this.state.data.tags);
+    const crumbs = [
+      {
+        name: 'repos',
+        route: '/repos'
+      },
+      {
+        name: this.state.repoName,
+        route: '/repos/' + this.state.repoName
+      }
+    ];
 
     return (
       <div>
-        <h2 className="title is-h2">repo: {this.state.repoName}</h2>
-        <div>{el}</div>
+        <BreadCrumbs crumbs={crumbs} />
+        <h3 className="title is-h2">repo: {this.state.repoName}</h3>
+        <table className="hover stack">
+          <tbody>
+            {el}
+          </tbody>
+        </table>
       </div>
     );
   }

@@ -3,6 +3,8 @@ import ReactJson from 'react-json-view';
 
 import repoServices from '../../constants/services';
 
+import { BreadCrumbs } from '../navigation';
+
 class TagManifest extends React.Component {
   constructor(props) {
     super(props);
@@ -41,51 +43,69 @@ class TagManifest extends React.Component {
     }
 
     const data = this.state.data;
+    const styles = {
+      verticalAlign: 'top'
+    };
+    const crumbs = [
+      {
+        name: 'repos',
+        route: '/repos'
+      },
+      {
+        name: this.state.repoName,
+        route: '/repos/' + this.state.repoName
+      },
+      {
+        name: this.state.tagName,
+        route: `/repos/${this.state.repoName}/${this.state.tagName}`
+      }
+    ];
 
     return (
       <Fragment>
-        <h2 className="title is-h2">tag: {this.state.repoName}:{this.state.tagName}</h2>
+        <BreadCrumbs crumbs={crumbs} />
+        <h3 className="title is-h2">tag: {this.state.repoName}:{this.state.tagName}</h3>
         <div>
-          <table className="table is-striped is-hoverable">
+          <table className="hover stack">
             <tbody>
               <tr>
-                <td>Name</td>
-                <td> : </td>
-                <td>{data.name}</td>
+                <td style={styles}>Name</td>
+                <td style={styles}> : </td>
+                <td style={styles}>{data.name}</td>
               </tr>
               <tr>
-                <td>Architecture</td>
-                <td> : </td>
-                <td>{data.architecture}</td>
+                <td style={styles}>Architecture</td>
+                <td style={styles}> : </td>
+                <td style={styles}>{data.architecture}</td>
               </tr>
               <tr>
-                <td>Tag</td>
-                <td> : </td>
-                <td>{data.tag}</td>
+                <td style={styles}>Tag</td>
+                <td style={styles}> : </td>
+                <td style={styles}>{data.tag}</td>
               </tr>
               <tr>
-                <td>Schema Version</td>
-                <td> : </td>
-                <td>{data.schemaVersion}</td>
+                <td style={styles}>Schema Version</td>
+                <td style={styles}> : </td>
+                <td style={styles}>{data.schemaVersion}</td>
               </tr>
               <tr>
-                <td>Layers</td>
-                <td> : </td>
-                <td>
+                <td style={styles}>Layers</td>
+                <td style={styles}> : </td>
+                <td style={styles}>
                   <ReactJson src={data.fsLayers} />
                 </td>
               </tr>
               <tr>
-                <td>Signatures</td>
-                <td> : </td>
-                <td>
+                <td style={styles}>Signatures</td>
+                <td style={styles}> : </td>
+                <td style={styles}>
                   <ReactJson src={data.signatures} />
                 </td>
               </tr>
               <tr>
-                <td>History</td>
-                <td> : </td>
-                <td>
+                <td style={styles}>History</td>
+                <td style={styles}> : </td>
+                <td style={styles}>
                   <ReactJson src={this.getFormattedHistory(data.history)} />
                 </td>
               </tr>

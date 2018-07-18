@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <Fragment>
         <TopNavigation />
-        <div className="container">
+        <div className="grid-container">
           <Routes />
         </div>
       </Fragment>
