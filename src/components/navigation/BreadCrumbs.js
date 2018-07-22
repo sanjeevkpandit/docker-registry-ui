@@ -1,19 +1,18 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 
 const BreadCrumbs = ({ crumbs }) => {
   const crumbEls = crumbs.map(crumb => (
-    <li key={`crumb-${crumb.name}`}>
-      <a href={`${crumb.route}`}>{crumb.name}</a>
-    </li>
+    <span key={`crumb-${crumb.name}`}>
+      <Button href={`${crumb.route}`}>{crumb.name}</Button> /
+    </span>
+
   ));
 
   return (
-    <nav aria-label="You are here:">
-      <ul className="breadcrumbs">
-        {crumbEls}
-      </ul>
-      <hr/>
-    </nav>
+    <p>
+      {crumbEls}
+    </p>
   );
 };
 

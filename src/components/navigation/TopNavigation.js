@@ -1,19 +1,23 @@
 import React from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+
+const styles = {
+  root: {
+    flexGrow: 1,
+  },
+};
 
 const TopNavigation = () => (
-  <div className="top-bar">
-    <div className="top-bar-left">
-      <ul className="dropdown menu" data-dropdown-menu>
-        <li className="menu-text">Docker Registry UI</li>
-        <li><a href="/repos">Repos</a></li>
-      </ul>
-    </div>
-    <div className="top-bar-right">
-      <ul className="menu">
-        <li><input type="search" placeholder="Search"/></li>
-        <li><button type="button" className="button">Search</button></li>
-      </ul>
-    </div>
+  <div className={styles.root}>
+    <AppBar position="static" color="default">
+      <Toolbar>
+        <Typography variant="title" color="inherit">
+          Docker Registry UI
+        </Typography>
+      </Toolbar>
+    </AppBar>
   </div>
 );
 

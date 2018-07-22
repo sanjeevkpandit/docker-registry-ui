@@ -1,14 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 const RepoListItem = props => {
   const hrefUrl =`/repos/${props.value}`;
 
   return (
-    <tr>
-      <td>
-        <a href={hrefUrl}>{props.value}</a>
-      </td>
-    </tr>
+    <ListItem button divider component={Link} to={hrefUrl}>
+      <ListItemText primary={props.value} />
+    </ListItem>
   );
 };
 

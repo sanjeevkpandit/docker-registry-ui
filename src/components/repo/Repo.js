@@ -1,4 +1,6 @@
 import React from 'react';
+import List from '@material-ui/core/List';
+import Typography from '@material-ui/core/Typography';
 
 import repoServices from '../../constants/services';
 
@@ -64,12 +66,12 @@ class Repo extends React.Component {
     return (
       <div>
         <BreadCrumbs crumbs={crumbs} />
-        <h3 className="title is-h2">repo: {this.state.repoName}</h3>
-        <table className="hover stack">
-          <tbody>
-            {el}
-          </tbody>
-        </table>
+        <Typography variant="display1">
+          Tags of repo: <strong>{this.state.repoName}</strong>
+        </Typography>
+        <List>
+          {el}
+        </List>
       </div>
     );
   }

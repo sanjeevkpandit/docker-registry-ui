@@ -1,4 +1,6 @@
 import React, { Fragment } from 'react';
+import List from '@material-ui/core/List';
+import Typography from '@material-ui/core/Typography';
 
 import repoServices from '../../constants/services';
 
@@ -60,12 +62,10 @@ class RepoList extends React.Component {
     return (
       <Fragment>
         <BreadCrumbs crumbs={crumbs} />
-        <h3 className="title is-h2">List of repositories</h3>
-        <table className="hover stack">
-          <tbody>
-            {els}
-          </tbody>
-        </table>
+        <Typography variant="display1">List of repositories</Typography>
+        <List>
+          {els}
+        </List>
       </Fragment>
     );
   };

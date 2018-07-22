@@ -1,5 +1,10 @@
 import React, { Fragment } from 'react';
 import ReactJson from 'react-json-view';
+import Table from '@material-ui/core/Table';
+import TableRow from '@material-ui/core/TableRow';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import Typography from '@material-ui/core/Typography';
 
 import repoServices from '../../constants/services';
 
@@ -64,53 +69,55 @@ class TagManifest extends React.Component {
     return (
       <Fragment>
         <BreadCrumbs crumbs={crumbs} />
-        <h3 className="title is-h2">tag: {this.state.repoName}:{this.state.tagName}</h3>
+        <Typography variant="display1">
+          Details for tag: <strong>{this.state.repoName}:{this.state.tagName}</strong>
+        </Typography>
         <div>
-          <table className="hover stack">
-            <tbody>
-              <tr>
-                <td style={styles}>Name</td>
-                <td style={styles}> : </td>
-                <td style={styles}>{data.name}</td>
-              </tr>
-              <tr>
-                <td style={styles}>Architecture</td>
-                <td style={styles}> : </td>
-                <td style={styles}>{data.architecture}</td>
-              </tr>
-              <tr>
-                <td style={styles}>Tag</td>
-                <td style={styles}> : </td>
-                <td style={styles}>{data.tag}</td>
-              </tr>
-              <tr>
-                <td style={styles}>Schema Version</td>
-                <td style={styles}> : </td>
-                <td style={styles}>{data.schemaVersion}</td>
-              </tr>
-              <tr>
-                <td style={styles}>Layers</td>
-                <td style={styles}> : </td>
-                <td style={styles}>
+          <Table>
+            <TableBody>
+              <TableRow>
+                <TableCell style={styles}>Name</TableCell>
+                <TableCell style={styles}> : </TableCell>
+                <TableCell style={styles}>{data.name}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell style={styles}>Architecture</TableCell>
+                <TableCell style={styles}> : </TableCell>
+                <TableCell style={styles}>{data.architecture}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell style={styles}>Tag</TableCell>
+                <TableCell style={styles}> : </TableCell>
+                <TableCell style={styles}>{data.tag}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell style={styles}>Schema Version</TableCell>
+                <TableCell style={styles}> : </TableCell>
+                <TableCell style={styles}>{data.schemaVersion}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell style={styles}>Layers</TableCell>
+                <TableCell style={styles}> : </TableCell>
+                <TableCell style={styles}>
                   <ReactJson src={data.fsLayers} />
-                </td>
-              </tr>
-              <tr>
-                <td style={styles}>Signatures</td>
-                <td style={styles}> : </td>
-                <td style={styles}>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell style={styles}>Signatures</TableCell>
+                <TableCell style={styles}> : </TableCell>
+                <TableCell style={styles}>
                   <ReactJson src={data.signatures} />
-                </td>
-              </tr>
-              <tr>
-                <td style={styles}>History</td>
-                <td style={styles}> : </td>
-                <td style={styles}>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell style={styles}>History</TableCell>
+                <TableCell style={styles}> : </TableCell>
+                <TableCell style={styles}>
                   <ReactJson src={this.getFormattedHistory(data.history)} />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
         </div>
       </Fragment>
     );

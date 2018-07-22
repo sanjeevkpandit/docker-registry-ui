@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import Grid from '@material-ui/core/Grid';
 
 import Routes from './Routes';
 import { TopNavigation } from './components/navigation';
@@ -6,12 +7,14 @@ import { TopNavigation } from './components/navigation';
 class App extends Component {
   render() {
     return (
-      <Fragment>
+      <div>
         <TopNavigation />
-        <div className="grid-container">
-          <Routes />
-        </div>
-      </Fragment>
+        <Grid container spacing={16}>
+          <Grid item xs={12}>
+            <Routes />
+          </Grid>
+        </Grid>
+      </div>
     );
   }
 }
