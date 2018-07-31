@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, {Fragment} from 'react';
 import ReactJson from 'react-json-view';
 import Table from '@material-ui/core/Table';
 import TableRow from '@material-ui/core/TableRow';
@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 
 import repoServices from '../../constants/services';
 
-import { BreadCrumbs } from '../navigation';
+import {BreadCrumbs} from '../navigation';
 
 class TagManifest extends React.Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class TagManifest extends React.Component {
   getFormattedHistory(history) {
     let hist = [];
 
-    for(let i = 0; i < history.length; i++) {
+    for (let i = 0; i < history.length; i++) {
       history[i]['v1Compatibility'] = JSON.parse(history[i]['v1Compatibility']);
       hist.push(history[i]);
     }
@@ -49,7 +49,7 @@ class TagManifest extends React.Component {
 
     const data = this.state.data;
     const styles = {
-      verticalAlign: 'top'
+      verticalAlign: 'middle'
     };
     const crumbs = [
       {
@@ -68,57 +68,55 @@ class TagManifest extends React.Component {
 
     return (
       <Fragment>
-        <BreadCrumbs crumbs={crumbs} />
+        <BreadCrumbs crumbs={crumbs}/>
         <Typography variant="display1">
           Details for tag: <strong>{this.state.repoName}:{this.state.tagName}</strong>
         </Typography>
-        <div>
-          <Table>
-            <TableBody>
-              <TableRow>
-                <TableCell style={styles}>Name</TableCell>
-                <TableCell style={styles}> : </TableCell>
-                <TableCell style={styles}>{data.name}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell style={styles}>Architecture</TableCell>
-                <TableCell style={styles}> : </TableCell>
-                <TableCell style={styles}>{data.architecture}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell style={styles}>Tag</TableCell>
-                <TableCell style={styles}> : </TableCell>
-                <TableCell style={styles}>{data.tag}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell style={styles}>Schema Version</TableCell>
-                <TableCell style={styles}> : </TableCell>
-                <TableCell style={styles}>{data.schemaVersion}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell style={styles}>Layers</TableCell>
-                <TableCell style={styles}> : </TableCell>
-                <TableCell style={styles}>
-                  <ReactJson src={data.fsLayers} />
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell style={styles}>Signatures</TableCell>
-                <TableCell style={styles}> : </TableCell>
-                <TableCell style={styles}>
-                  <ReactJson src={data.signatures} />
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell style={styles}>History</TableCell>
-                <TableCell style={styles}> : </TableCell>
-                <TableCell style={styles}>
-                  <ReactJson src={this.getFormattedHistory(data.history)} />
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </div>
+        <Table>
+          <TableBody>
+            <TableRow hover>
+              <TableCell style={styles}>Name</TableCell>
+              <TableCell style={styles}> : </TableCell>
+              <TableCell style={styles}>{data.name}</TableCell>
+            </TableRow>
+            <TableRow hover>
+              <TableCell style={styles}>Architecture</TableCell>
+              <TableCell style={styles}> : </TableCell>
+              <TableCell style={styles}>{data.architecture}</TableCell>
+            </TableRow>
+            <TableRow hover>
+              <TableCell style={styles}>Tag</TableCell>
+              <TableCell style={styles}> : </TableCell>
+              <TableCell style={styles}>{data.tag}</TableCell>
+            </TableRow>
+            <TableRow hover>
+              <TableCell style={styles}>Schema Version</TableCell>
+              <TableCell style={styles}> : </TableCell>
+              <TableCell style={styles}>{data.schemaVersion}</TableCell>
+            </TableRow>
+            <TableRow hover>
+              <TableCell style={styles}>Layers</TableCell>
+              <TableCell style={styles}> : </TableCell>
+              <TableCell style={styles}>
+                <ReactJson src={data.fsLayers}/>
+              </TableCell>
+            </TableRow>
+            <TableRow hover>
+              <TableCell style={styles}>Signatures</TableCell>
+              <TableCell style={styles}> : </TableCell>
+              <TableCell style={styles}>
+                <ReactJson src={data.signatures}/>
+              </TableCell>
+            </TableRow>
+            <TableRow hover>
+              <TableCell style={styles}>History</TableCell>
+              <TableCell style={styles}> : </TableCell>
+              <TableCell style={styles}>
+                <ReactJson src={this.getFormattedHistory(data.history)}/>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </Fragment>
     );
   }
